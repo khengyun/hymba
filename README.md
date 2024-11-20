@@ -102,7 +102,9 @@ Hymba models are released under the [NVIDIA Open Model License Agreement](https:
 
 
 ## Trouble Shooting
-Please refer to the [Trouble Shooting](https://github.com/NVlabs/hymba/blob/main/TROUBLESHOOTING.md) page for help.
+**[Caution] During generation, the batch size needs to be 1. Our current implementation does not fully support padding of Meta tokens + SWA; this is a work in progress. Training and pre-filling support any batch size.**
+
+For other questions, please refer to the [Trouble Shooting](https://github.com/NVlabs/hymba/blob/main/TROUBLESHOOTING.md) page and feel free to submit an issue for help.
 
 ## Citation
 
