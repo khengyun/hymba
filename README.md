@@ -102,7 +102,7 @@ Hymba models are released under the [NVIDIA Open Model License Agreement](https:
 
 
 ## Trouble Shooting
-Please refer to the [Trouble Shooting](https://github.com/OptimalScale/LMFlow/blob/main/readme/TROUBLESHOOTING.md) page for help.
+Please refer to the [Trouble Shooting](https://github.com/NVlabs/hymba/blob/main/readme/TROUBLESHOOTING.md) page for help.
 
 ## Citation
 
