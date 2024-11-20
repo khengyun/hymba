@@ -16,7 +16,7 @@ Hymba is a family of small language models (SLMs) featuring a hybrid-head parall
 ## Hymba Model Performance
 
 <p align="center">
-  <img src="images/hymba-performance.png" alt="Hymba Performance" width="512"/>
+  <img src="images/hymba-performance.png" alt="Hymba Performance" width="1024"/>
   <p align="center">Performance comparison of Hymba-1.5B-Base against sub-2B models in terms of average accuracy, cache size (MB) relative to sequence length, and throughput (tok/sec).</p>
 </p>
 
