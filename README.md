@@ -2,7 +2,7 @@
 
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/collections/nvidia/hymba-673c35516c12c4b98b5e845f">Hugging Face Models</a>&nbsp&nbsp | &nbsp&nbsp 📄 <a href="xxx">Paper</a> &nbsp&nbsp | &nbsp&nbsp 📜 <a href="xxx">Blog</a> &nbsp </a>
+        🤗 <a href="https://huggingface.co/collections/nvidia/hymba-673c35516c12c4b98b5e845f">Hugging Face Models</a>&nbsp&nbsp | &nbsp&nbsp 📄 <a href="https://arxiv.org/abs/2411.13676">Paper</a> &nbsp&nbsp </a>
 </p>
 
 ## Introduction
@@ -11,7 +11,7 @@ Hymba is a family of small language models (SLMs) featuring a hybrid-head parall
 
 ## News
 
-1. 🚀 Hymba is out! Check our blog post: [Hymba: A Hybrid-head Architecture for Small Language Models.](xxx).
+1. 🚀 Hymba is out! Check our blog post: [Hymba: A Hybrid-head Architecture for Small Language Models.](https://arxiv.org/abs/2411.13676).
 
 ## Hymba Model Performance
 
@@ -111,10 +111,12 @@ For other questions, please refer to the [Trouble Shooting](https://github.com/N
 If you find our work helpful, please consider citing our paper:
 ```
 @article{hymba2024,
-      title={A Hybrid-head Architecture for Small Language Models}, 
-      author={Xin Dong and Yonggan Fu and Shizhe Diao and Wonmin Byeon and Zijia Chen and Ameya Sunil Mahabaleshwarkar and Shih-Yang Liu and Matthijs Van Keirsbilck and Min-Hung Chen and Yoshi Suhara and Yingyan Celine Lin and Jan Kautz and Pavlo Molchanov},
-      journal={arXiv preprint arXiv:xxxx},
+      title={Hymba: A Hybrid-head Architecture for Small Language Models}, 
+      author={Xin Dong and Yonggan Fu and Shizhe Diao and Wonmin Byeon and Zijia Chen and Ameya Sunil Mahabaleshwarkar and Shih-Yang Liu and Matthijs Van Keirsbilck and Min-Hung Chen and Yoshi Suhara and Yingyan Lin and Jan Kautz and Pavlo Molchanov},
       year={2024},
-      url={https://arxiv.org/abs/xxxx}, 
+      eprint={2411.13676},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2411.13676}, 
 }
 ```
