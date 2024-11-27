@@ -48,9 +48,8 @@ bash setup.sh
 - **[Docker]** We have prepared a docker image with all of Hymba's dependencies installed. You can download our docker image and start a container using the following commands:
 
 ```
-wget http://10.137.9.244:8000/hymba_docker.tar
-docker load -i hymba.tar
-docker run --security-opt seccomp=unconfined --gpus all -v /home/$USER:/home/$USER -it hymba:v1 bash
+docker pull ghcr.io/tilmto/hymba:v1
+docker run --gpus all -v /home/$USER:/home/$USER -it ghcr.io/tilmto/hymba:v1 bash
 ```
 
 ### Chat with Hymba
