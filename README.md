@@ -37,7 +37,7 @@ Please see:
 
 ### Environment Setup
 
-Since our model employs [FlexAttention](https://pytorch.org/blog/flexattention/), which relies on Pytorch 2.5 and other related dependencies, we provide three ways to set up the environment:
+Since our model employs [FlexAttention](https://pytorch.org/blog/flexattention/), which relies on PyTorch 2.5 and other related dependencies, we provide two ways to set up the environment:
 
 - **[Local Install]** Install the related packages using our provided `setup.sh` (support CUDA 12.1/12.4):
 ```
