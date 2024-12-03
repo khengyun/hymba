@@ -95,6 +95,39 @@ The following steps provide an example of how to fine-tune the `Hymba-1.5B-Base`
 With LMFlow, you can also fine-tune the model on your custom dataset. The only thing you need to do is transform your dataset into the [LMFlow data format](https://optimalscale.github.io/LMFlow/examples/DATASETS.html).
 In addition to full-finetuniing, you can also fine-tune hymba efficiently with [DoRA](https://arxiv.org/html/2402.09353v4), [LoRA](https://github.com/OptimalScale/LMFlow?tab=readme-ov-file#lora), [LISA](https://github.com/OptimalScale/LMFlow?tab=readme-ov-file#lisa), [Flash Attention](https://github.com/OptimalScale/LMFlow/blob/main/readme/flash_attn2.md), and other acceleration techniques.
 
+## Evaluation
+We use LM Evaluation Harness to evaluate the model. The evaluation commands are as follows:
+
+```bash
+git clone --depth 1 https://github.com/EleutherAI/lm-evaluation-harness
+git fetch --all --tags
+git checkout tags/v0.4.4  # squad completion task is not compatible with the latest version
+cd lm-evaluation-harness
+pip install -e .
+
+lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Base,dtype=bfloat16,trust_remote_code=True \
+     --tasks mmlu \
+     --num_fewshot 5 \
+     --batch_size 1 \
+     --output_path ./hymba_HF_base_lm-results \
+     --log_samples 
+
+lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Base,dtype=bfloat16,trust_remote_code=True \
+     --tasks arc_easy,arc_challenge,piqa,winogrande,hellaswag \
+     --num_fewshot 0 \
+     --batch_size 1 \
+     --output_path ./hymba_HF_base_lm-results \
+     --log_samples 
+
+lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Base,dtype=bfloat16,trust_remote_code=True \
+     --tasks squad_completion \
+     --num_fewshot 1 \
+     --batch_size 1 \
+     --output_path ./hymba_HF_base_lm-results \
+     --log_samples
+```
+
+
 ## License
 
 Hymba models are released under the [NVIDIA Open Model License Agreement](https://developer.download.nvidia.com/licenses/nvidia-open-model-license-agreement-june-2024.pdf).
