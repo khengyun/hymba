@@ -11,7 +11,7 @@ Hymba is a family of small language models (SLMs) featuring a hybrid-head parall
 
 ## News
 
-1. 🚀 Hymba is out! Check our blog post: [Hymba: A Hybrid-head Architecture for Small Language Models.](https://arxiv.org/abs/2411.13676).
+1. 🚀 Hymba is out! Check our [blog post](https://developer.nvidia.com/blog/hymba-hybrid-head-architecture-boosts-small-language-model-performance/) and [paper](https://arxiv.org/abs/2411.13676).
 
 ## Hymba Model Performance
 
@@ -30,8 +30,6 @@ Please see:
 
 1. [Hymba-1.5B-Base](https://huggingface.co/nvidia/Hymba-1.5B-Base)
 2. [Hymba-1.5B-Instruct](https://huggingface.co/nvidia/Hymba-1.5B-Instruct)
-
-
 
 ## Model Usage
 
@@ -63,37 +61,35 @@ python chat.py
 
 
 [LMFlow](https://github.com/OptimalScale/LMFlow) is a complete pipeline for fine-tuning large language models. 
-The following steps provide an example of how to fine-tune the `Hymba-1.5B-Base` models using LMFlow with the `alpaca` dataset.
+The following steps provide an example of how to fine-tune the `Hymba-1.5B-Base` models using LMFlow.
 
-1. Install LMFlow
+1. Using Docker
 
     ```
-    git clone https://github.com/OptimalScale/LMFlow.git
-    cd LMFlow
-    bash install.sh
+      docker pull ghcr.io/tilmto/hymba:v1
+      docker run --gpus all -v /home/$USER:/home/$USER -it ghcr.io/tilmto/hymba:v1 bash
     ```
-  
-2. Prepare the dataset
-  
-      Download the [alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca) dataset and preprocess it using the following command.
-  
-      ```bash
-      cd data && ./download.sh alpaca && cd -
-      ```
+2. Install LMFlow
 
-3. Fine-tune the model
+    ```
+      git clone https://github.com/OptimalScale/LMFlow.git
+      cd LMFlow
+      conda create -n lmflow python=3.9 -y
+      conda activate lmflow
+      conda install mpi4py
+      pip install -e .
+    ```
+
+3. Fine-tune the model using the following command.
   
-      Fine-tune the Hymba-1.5B-Base model on the alpaca dataset using the following command.
-    
-      ```bash
-      bash ./scripts/run_finetune.sh \
-        --model_name_or_path nvidia/Hymba-1.5B-Base \
-        --dataset_path data/alpaca/train_conversation \
-        --output_model_path output_models/finetuned_hymba
-      ```
+    ```
+      cd LMFlow
+      bash ./scripts/run_finetune_hymba.sh
+    ```
 
 With LMFlow, you can also fine-tune the model on your custom dataset. The only thing you need to do is transform your dataset into the [LMFlow data format](https://optimalscale.github.io/LMFlow/examples/DATASETS.html).
 In addition to full-finetuniing, you can also fine-tune hymba efficiently with [DoRA](https://arxiv.org/html/2402.09353v4), [LoRA](https://github.com/OptimalScale/LMFlow?tab=readme-ov-file#lora), [LISA](https://github.com/OptimalScale/LMFlow?tab=readme-ov-file#lisa), [Flash Attention](https://github.com/OptimalScale/LMFlow/blob/main/readme/flash_attn2.md), and other acceleration techniques.
+For more details, please refer to the [LMFlow for Hymba](https://github.com/OptimalScale/LMFlow/tree/main/experimental/Hymba) documentation.
 
 ## Evaluation
 We use LM Evaluation Harness to evaluate the model. The evaluation commands are as follows:
@@ -140,7 +136,7 @@ For other questions, please refer to the [Trouble Shooting](https://github.com/N
 
 ## Citation
 
-If you find our work helpful, please consider citing our paper:
+If you find our work helpful, please consider citing our [paper](https://arxiv.org/abs/2411.13676):
 ```
 @article{hymba2024,
       title={Hymba: A Hybrid-head Architecture for Small Language Models}, 
