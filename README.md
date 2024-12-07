@@ -95,9 +95,6 @@ For more details, please refer to the [LMFlow for Hymba](https://github.com/Opti
 We use LM Evaluation Harness to evaluate the model. The evaluation commands are as follows:
 
 ```bash
-git clone --depth 1 https://github.com/EleutherAI/lm-evaluation-harness
-git fetch --all --tags
-git checkout tags/v0.4.4  # squad completion task is not compatible with the latest version
 cd lm-evaluation-harness
 pip install -e .
 
@@ -121,6 +118,22 @@ lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Base,dtype=bfloat16
      --batch_size 1 \
      --output_path ./hymba_HF_base_lm-results \
      --log_samples
+
+lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Instruct,dtype=bfloat16,trust_remote_code=True \
+     --tasks mmlu,gsm8k \
+     --num_fewshot 5 \
+     --batch_size 1 \
+     --output_path ./hymba_HF_instruct_lm-results \
+     --log_samples \
+     --apply_chat_template --fewshot_as_multiturn --device cuda:0
+    
+lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Instruct,dtype=bfloat16,trust_remote_code=True \
+     --tasks ifeval,gpqa \
+     --num_fewshot 0 \
+     --batch_size 1 \
+     --output_path ./hymba_HF_instruct_lm-results \
+     --log_samples \
+     --apply_chat_template --fewshot_as_multiturn --device cuda:0
 ```
 
 
