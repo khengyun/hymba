@@ -123,6 +123,7 @@ lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Instruct,dtype=bflo
      --tasks mmlu,gsm8k \
      --num_fewshot 5 \
      --batch_size 1 \
+     --gen_kwargs max_length=8192 \
      --output_path ./hymba_HF_instruct_lm-results \
      --log_samples \
      --apply_chat_template --fewshot_as_multiturn --device cuda:0
@@ -131,6 +132,7 @@ lm_eval --model hf --model_args pretrained=nvidia/Hymba-1.5B-Instruct,dtype=bflo
      --tasks ifeval,gpqa \
      --num_fewshot 0 \
      --batch_size 1 \
+     --gen_kwargs max_length=8192 \
      --output_path ./hymba_HF_instruct_lm-results \
      --log_samples \
      --apply_chat_template --fewshot_as_multiturn --device cuda:0
