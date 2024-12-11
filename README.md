@@ -11,7 +11,9 @@ Hymba is a family of small language models (SLMs) featuring a hybrid-head parall
 
 ## News
 
-1. 🚀 Hymba is out! Check our [blog post](https://developer.nvidia.com/blog/hymba-hybrid-head-architecture-boosts-small-language-model-performance/) and [paper](https://arxiv.org/abs/2411.13676).
+* ⚡ A minimal nanoGPT-style implementation of Hymba is now available in this [repository](./barebones_hymba/). Try it out and adapt designs for your own models!
+
+* 🚀 Hymba is out! Check our [blog post](https://developer.nvidia.com/blog/hymba-hybrid-head-architecture-boosts-small-language-model-performance/) and [paper](https://arxiv.org/abs/2411.13676).
 
 ## Hymba Model Performance
 
