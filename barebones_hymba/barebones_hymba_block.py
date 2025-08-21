@@ -59,6 +59,10 @@ from mamba_ssm.ops.selective_scan_interface import mamba_inner_fn, selective_sca
 from mamba_ssm.ops.triton.selective_state_update import selective_state_update
 from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
 
+# Import cache management
+from .cache_management import HymbaCache, CacheAwareAttention
+from .production_config import ProductionHymbaConfig
+
 
 def rotate_half(x):
     """Rotates half the hidden dims of the input."""
@@ -397,6 +401,8 @@ class HymbaBlock(nn.Module):
         seq_length=None,
         use_positional_embedding=False,
         rope_base=None,
+        cache=None,
+        layer_idx=None,
         ):
         super().__init__()
 
@@ -431,6 +437,12 @@ class HymbaBlock(nn.Module):
         self.self_attn = AttentionBranch(self.num_attention_heads, self.num_key_value_heads, self.attention_head_size, attention_window_size, modify_attention_mask, num_meta_tokens, seq_length, use_positional_embedding, rope_base)
 
         self.mamba = MambaBranch(self.intermediate_size, self.conv_kernel_size, self.time_step_rank, self.ssm_state_size)
+
+        # Cache integration
+        self.cache = cache
+        self.layer_idx = layer_idx
+        if cache is not None and layer_idx is not None:
+            self.cache_aware_attn = CacheAwareAttention(self.self_attn, cache, layer_idx)
 
 
     def forward(self, hidden_states):
